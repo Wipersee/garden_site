@@ -15,8 +15,8 @@
 <body>
     <div class="wrapper">
         <div class="content">
-            <section class = "section_background">
-                <div class="container">                    
+            <section class = "section_background  ">
+                <div class="container rellax">                    
                     <header>
                         <div class="header_top">
                             <div class="header_logo">
@@ -32,7 +32,7 @@
                     <nav>
                         <div class="nav-l"><a href="#">Про нас</a></div>
                         <div class="nav-l"><a href="#">Садовий декор</a></div>
-                        <div class="nav-l"><a href="#">Фонтани</a></div>
+                        <div class="nav-l"><a href="fontain.html">Фонтани</a></div>
                         <div class="nav-l"><a href="#">Єврозабори</a></div>
                         <div class="nav-l"><a href="#">Контакти</a></div>
                     </nav>
@@ -116,7 +116,7 @@
             <div class="footer_nav">
                 <div class="nav-l footer_nav-l"><a href="#">Про нас</a></div>
                 <div class="nav-l footer_nav-l"><a href="#">Садовий декор</a></div>
-                <div class="nav-l footer_nav-l"><a href="#">Фонтани</a></div>
+                <div class="nav-l footer_nav-l"><a href="fontain.html">Фонтани</a></div>
                 <div class="nav-l footer_nav-l"><a href="#">Єврозабори</a></div>
                 <div class="nav-l footer_nav-l"><a href="#">Контакти</a></div>
             </div>
@@ -132,6 +132,14 @@
     slider({
             selector: document.querySelector('.slider'),
             });
+    </script>
+    <script src="js/rellax.min.js"></script>
+    <script>
+      // применяется ко всем блокам с классом .rellax
+      var rellax = new Rellax('.rellax',{
+        horizontal: true,
+        speed: 3,
+      });
     </script>
 </body>
 </html>

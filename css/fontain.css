@@ -6,7 +6,7 @@ html,
 body {
     height: 100%;
     font-size:14px;
-    background-color:  rgba(255,255,255,0.6);;
+    background-color: rgba(255,255,255,0.6);
 }
 a {
     text-decoration: none;
@@ -25,7 +25,6 @@ a {
 .section_background {
     width:100%;
     height:100vh;
-    background-image: url('../img/main_background.jpg');
     background-size:cover;
     padding-top:1rem;
 }
@@ -34,7 +33,7 @@ a {
     flex-direction: row;
     justify-content: space-between;
     width:100%;
-    border-bottom:.1rem white solid;
+    border-bottom:.1rem rgba(0,0,0, 0.7) solid;
     padding-bottom:.5rem;
 }
 .header_contacts {
@@ -44,7 +43,7 @@ a {
     width:25%;
     text-align: right;
     font-family:'Source Sans Pro', sans;
-    color: #efefef;
+    color: rgba(0,0,0, 0.7);
     font-size:1.2rem;
     padding-top:1.1rem;
 }
@@ -55,6 +54,7 @@ a {
     width:100%;
     height:auto;
 }
+
 nav, .footer_nav {
     margin-top:1.2rem;
     display: flex;
@@ -64,7 +64,7 @@ nav, .footer_nav {
     
 }
 .nav-l{
-    border-right: .1rem rgba(255,255,255, 0.5) solid;
+    border-right: .1rem rgba(0,0,0, 0.7) solid;
     padding-right:1rem;
 }
 .nav-l:last-child, .footer_nav-l:last-child{
@@ -72,35 +72,45 @@ nav, .footer_nav {
 }
 .nav-l a{
     font-family:'Source Sans Pro', sans;
-    color: #efefef;
+    color: rgba(0,0,0, 0.7);
     font-size:1.4rem;
 }
 .nav-l a:hover{
     color:#3cb371;
 }
-.name_of_company, .company_slogan{
-    text-align: center;
-    margin-top:12rem;
-    font-family: 'Source Sans Pro', sans;
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: #efefef;
-}
-.company_slogan {
-    margin-top:3rem;
-    font-size:1.8rem;
-}
-.company_bottom-border{
-    width:30%;
-    height:.1rem;
-    margin:5.5rem auto;
-    border-bottom: .1rem white solid;
-}
-
-.advant, .order, .reviews {
+.advant, .order, .reviews, .about_product {
     margin-top: 2rem;
     border-bottom:.1rem rgba(48,48,48,0.3) solid;
     padding-bottom:5.5rem;
+}
+.item{
+    display:flex;
+    justify-content: space-around;
+    clear:both;
+    margin-top:4rem;
+}
+.item_left{
+    width:30%;
+}
+.item_right{
+    width:25%;
+    overflow: hidden;
+    height:80vh;
+}
+.item_right img{
+    width:100%;
+    height:auto;
+}
+.name_of_item{
+    color:#606060;
+    font-family:"Spectral", sans;
+    font-size:3.5rem;
+    font-weight: 300;
+}
+.item_slogan{
+    font-family:"Source Sans Pro", sans-serif;
+    font-size:1.2rem;
+    color:rgba(48,48,48,0.8);
 }
 .advant_h3, .order_h5{
     color:#606060;
@@ -123,93 +133,64 @@ nav, .footer_nav {
 }
 .advant_a-first{
     width:33%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 .advant_a-first-left{
     color:#aedd94;
     font-size:5rem;
-    font-weight: 300;
     margin-right:.5rem;
+    text-align: center;
 }
 .advant_a-first-right-h5{
     font-family: "Source Sans Pro", sans-serif;
     color:#606060;
     font-size:2.5rem;
     font-weight: 300;
+    text-align:center;
 }
 .advant_a-first-right-p{
     font-family: "Spectral", serif;
     color:#606060;
     font-weight: 300;
     font-size:1.2rem;
-}
-.container-fix{
-    max-width: 1000px;
-}
-.reviews-h4{
-    font-family: "Source Sans Pro", sans-serif;
-    color:#606060;
-    font-size:3rem;
-    font-weight: 300;
     text-align:center;
-    margin-top:1.5rem;
 }
-.slide-item{
-    width:30%;
-    height:auto;
-    border:.1rem #3cb371 solid;
-    padding:1rem;
-    font-family:"Spectral", serif;
-    color:#606060;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.about_product-h3{
+    text-align:center;
+    font-family:"Source Sans Pro", sans;
+    font-size:2.5rem;
+    color:rgba(48,48,48,0.8);
+    font-weight: 300;
 }
-.slide_p{
-    font-size:1.3rem;
-}
-.slide_underwrite{
-    width:15%;
-    margin:1rem auto;
-    height:.5rem;
-    border-bottom: .1rem rgba(48,48,48,0.3) solid;
-}
-.slide_author{
-    font-family: "Source Sans Pro", sans-serif;
-    font-size:1rem;
-    color: rgba(48,48,48,0.6);
-}
-.slider{
+.content_block{
+    display:flex;
+    justify-content: space-between;
     margin-top:2rem;
-    
 }
-.slider > ul{
-    position: inherit;
-    margin-top:2.5rem;
-}
-.order_form{
+.content_block p{
     width:60%;
-    margin:2rem auto;
+    font-family: "Spectral", sans;
+    color: #606060;
+    font-size:1.4rem;
+
 }
-.order_form-name, .order_form-phone {
-    width:100%;
-    padding:.5rem;
-    height:3.5rem;
-    margin-bottom:2rem;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size:1.2rem;
+.content_block-img{
+    max-width:30%;
 }
 .order_btn{
-    width:30%;
-    margin:1rem auto;
+    width:55%;
+    margin-top:2rem;
     display:block;
-    height:4.2rem;
+    height:4.5rem;
     background-color: #aedd94;
     color:#000000;
     font-family: "Source Sans Pro", sans-serif;
     font-size:1.2rem;
     font-weight: 300;
     border:none;
+    border-radius:.3rem;
 }
 .order_btn:hover{
     cursor:pointer;
@@ -253,4 +234,25 @@ nav, .footer_nav {
     color: #606060;
     font-size:1rem;
     text-align: center;
+}
+.active a{
+    color:#3cb371;
+}
+.swal2-confirm{
+    display:none;
+}
+.order_form{
+    width:60%;
+    margin:2rem auto;
+}
+.order_form-name, .order_form-phone {
+    width:100%;
+    padding:.5rem;
+    height:2rem;
+    margin-bottom:2rem;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size:1.2rem;
+}
+.order_button{
+    margin:1rem auto;
 }

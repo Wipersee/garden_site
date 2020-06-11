@@ -194,7 +194,7 @@ nav, .footer_nav {
 }
 .order_btn:hover{
     cursor:pointer;
-    background-color:3cb371;
+    background-color:#3cb371;
     border:.1rem black solid;
 }
 .footer {
@@ -255,4 +255,152 @@ nav, .footer_nav {
 }
 .order_button{
     margin:1rem auto;
+}
+
+/*     MEDIA REQUESTS     */
+@media screen and (max-width:1200px) {
+    html {
+      font-size: 14px;
+    }
+    .header_contacts{
+        width:35%;
+    }
+    nav{
+        width:70%;
+    }
+}
+@media screen and (max-width:992px) {
+    html {
+      font-size: 13px;
+    }
+    .container{
+        max-width:990px;
+    }
+    .header_top{
+        width:95%;
+        margin:0 auto;
+    }
+    .header_contacts{
+        width:34%;
+    }
+    nav{
+        width:75%;
+    }
+    .footer_nav{
+        width:60%;
+    }
+    .advant_a-first-right-h5{
+        font-size:1.8rem;
+    }
+    .advant_a-first-right-p{
+        font-size:.9rem;
+    }
+    .advant_a-first-left{
+        font-size:4rem;
+    }
+}
+@media screen and (max-width:768px) {
+    html {
+      font-size: 12px;
+    }
+    .container{
+        max-width:740px;
+    }
+    .header_contacts{
+        width:40%;
+    }
+    .order_btn{
+        width:80%;
+        height:5rem;
+    }
+    .item{
+        margin-top:7.5rem;
+    }
+    .content_block{
+        flex-direction: column;
+    }
+    .content_block p {
+        width:100%;
+    }
+    .content_block img{
+        margin:1rem auto;
+    }
+}
+@media screen and (max-width:550px) {
+    .header_contacts{
+        width:45%;
+    }
+    nav{
+        width:95%;
+    }
+}
+@media screen and (max-width:480px) {
+    html {
+      font-size: 11px;
+    }
+    nav{
+        width:100%;
+    }
+    .header_contacts{
+        width:50%;
+    }
+    .name_of_company{
+        font-size:4.2rem;
+        margin-top:15rem;
+    }
+    .company_slogan{
+        font-size:2.2rem;
+    }
+    .company_bottom-border{
+        width:42%;
+    }
+    .advant_a{
+        flex-direction: column;
+
+    }
+    .advant_a-first{
+        margin:3rem auto;
+        flex-direction: column;
+        text-align:center;
+    }
+    .advant_a-first-right-h5{
+        font-size:2.5rem;
+    }
+    .advant_a-first-right-p{
+        font-size:1.8rem;
+    }
+    .advant_a-first-left{
+        font-size:5rem;
+    }
+    .slider{
+        width:90%;
+        margin:2rem auto;
+    }
+    .advant_a-first{
+        width:45%;
+    }
+    .footer_nav{
+        width:80%;
+    }
+    
+}
+@media screen and (max-width:550px) {
+    html {
+      font-size: 9px;
+    }
+    .item{
+        margin-top:15.5rem;
+        flex-direction: column;
+    }
+    .item_left{
+        width:100%;
+        text-align: center;
+    }
+    .order_btn{
+        margin:1rem auto;
+    }
+    .item_right{
+        margin:2rem auto;
+        width:40%;
+    }
 }

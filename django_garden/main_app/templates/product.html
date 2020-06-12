@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Main page</title>
+    <link rel="stylesheet" href="{% static 'css/normilize.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a0cb13235c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}" />
+    <script src="{% static 'js/slider.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/hamburger.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontain.css' %}">
+    <script src="{% static 'js/button.js' %}"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <section class = "section_background ">
+                <div class="container">                    
+                    <header>
+                        <div class="header_top">
+                            <div class="header_logo">
+                                <img src="{% static 'img/logo.png' %}" alt="Логотип" class="header_logo-img">
+                            </div>
+                            <div class="header_contacts">
+                                <div class="header_contacts-mail">example@gmail.com</div>
+                                <div class="header_contacts-hash">|</div>
+                                <div class="header_contacts-phone">+380637884507</div>                                
+                            </div>
+                        </div>
+                    </header>
+                    <nav>
+                        <div class="nav-l"><a href="{% url 'main_page' %}">Про нас</a></div>
+                        {% for product in products %}
+                        <div class="nav-l"><a href="{% url 'product' product.slug %}">{{ product.product_name }}</a></div>
+                        {% endfor %}
+                        <div class="nav-l"><a href="#">Контакти</a></div>
+                    </nav>
+                    <div class="item">
+                        <div class="item_left">
+                            <h1 class="name_of_item">{{ product.product_name }}</h1>
+                            <div class="item_slogan">{{ product.short_description }}</div>
+                            <button class="order_btn" onclick="execute()">Залишити заявку</button>
+                        </div>
+                        <div class="item_right">
+                            <img src="{{ product.photo.url }}" alt="Садовий декор" class="rellax">
+                        </div>
+                    </div>
+                    </div>
+                    </section>
+                    <section class="advant">
+                        <div class="container"> 
+                            <div class="advant_a">
+
+                            {% for advant in advantages %}
+                                <div class="advant_a-first">
+                                    <i class="fas fa-check advant_a-first-left"></i>
+                                    <div class="advant_a-first-right ">
+                                        <h5 class="advant_a-first-right-h5">{{ advant.short_advant_name }}</h5>
+                                        <p class="advant_a-first-right-p">{{ advant.short_advant_description }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                    <section class="about_product">
+                        <div class="container">
+                            <h3 class="about_product-h3">Опис продукції</h3>
+                            {% for desc in descriptions %}
+                            <div class="content_block">
+                                <p class="content_block-p">{{ desc.desc_text }}</p>
+                                <img src="{{ desc.desc_image.url }}" alt="Наша робота фонтани" class="content_block-img">
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="footer">
+                    <div class="container"> 
+                    <div class="footer_nav">
+                        <div class="nav-l footer_nav-l"><a href="#">Про нас</a></div>
+                        <div class="nav-l footer_nav-l"><a href="#">Садовий декор</a></div>
+                        <div class="nav-l footer_nav-l"><a href="#">Фонтани</a></div>
+                        <div class="nav-l footer_nav-l"><a href="#">Єврозабори</a></div>
+                        <div class="nav-l footer_nav-l"><a href="#">Контакти</a></div>
+                    </div>
+                    <div class="footer_underline"></div>
+                    <div class="footer-company_name">
+                        <i class="far fa-copyright"></i> Назва компанії
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

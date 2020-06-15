@@ -26,3 +26,12 @@ class Description(models.Model):
 
 	def __str__(self):
 		return self.product.product_name
+
+class Comments(models.Model): #FIX TO COMMENT
+	author = models.CharField(max_length = 255)
+	comment = models.TextField()
+	mail = models.CharField(max_length = 255)
+	date = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return self.author

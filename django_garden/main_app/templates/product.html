@@ -1,23 +1,46 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ua">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <title>Main page</title>
+    <title>{{ product.product_name }}</title>
     <link rel="stylesheet" href="{% static 'css/normilize.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a0cb13235c.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.14.4/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/slider.css' %}" />
     <script src="{% static 'js/slider.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/hamburger.css' %}">
     <link rel="stylesheet" href="{% static 'css/fontain.css' %}">
-    <script src="{% static 'js/button.js' %}"></script>
+    <!--script src="{% static 'js/button.js' %}"></script-->
+    {% if product.product_name != 'Фонтани' %}
     <style>
-        
+        .item_right{
+            width:55%;
+            margin-top:5rem;
+            height:auto;
+        }
+        {% if product.product_name == 'Єврозабори' %}
+         .item_right{
+            width:45%;
+            margin-top:0;
+            height:auto;
+        }
+        {% endif %}
+        .section_background{
+            border-bottom:.1rem rgba(48,48,48,0.3) solid;
+        }
+        @media screen and (max-width:550px) {
+            .item_right{
+                margin:2rem auto;
+                width:75%;
+            }
+        }
     </style>
+    {% endif %}
 </head>
 <body>
     <div class="wrapper">
@@ -50,7 +73,7 @@
                             <button class="order_btn" onclick="execute()">Залишити заявку</button>
                         </div>
                         <div class="item_right">
-                            <img src="{{ product.photo.url }}" alt="Садовий декор" class="rellax">
+                            <img src="{{ product.photo.url }}" alt="Садовий декор">
                         </div>
                     </div>
                     </div>
@@ -87,10 +110,10 @@
                 <div class="footer">
                     <div class="container"> 
                     <div class="footer_nav">
-                        <div class="nav-l footer_nav-l"><a href="#">Про нас</a></div>
-                        <div class="nav-l footer_nav-l"><a href="#">Садовий декор</a></div>
-                        <div class="nav-l footer_nav-l"><a href="#">Фонтани</a></div>
-                        <div class="nav-l footer_nav-l"><a href="#">Єврозабори</a></div>
+                        <div class="nav-l footer_nav-l"><a href="{% url 'main_page' %}">Про нас</a></div>
+                        {% for product in products %}
+                        <div class="nav-l footer_nav-l"><a href="{% url 'product' product.slug %}">{{ product.product_name }}</a></div>
+                        {% endfor %}
                         <div class="nav-l footer_nav-l"><a href="#">Контакти</a></div>
                     </div>
                     <div class="footer_underline"></div>
@@ -100,6 +123,20 @@
                 </div>
             </div>
         </div>
-
+        <script type="text/javascript">
+            function execute(){
+                Swal.fire({
+                title: 'Залиште заявку на замовлення',
+                html:
+                    '<form method="POST" class="order_form">'+
+                                    `{{ form.as_p }}`+
+                                    '{% csrf_token %}'+
+                                    '<p class="order_p">Телефон у вигляді +380xxxxxxxxx</p>'+
+                        '<button class="order_btn order_button">Відправити</button>'+
+                    '</form>',
+                focusConfirm: false,
+                showConfirmButton:false,
+            })};
+        </script>
     </body>
 </html>

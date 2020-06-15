@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Product)
 admin.site.register(Advantage)
 admin.site.register(Description)
+admin.site.register(Comments)

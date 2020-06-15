@@ -195,13 +195,28 @@ nav, .footer_nav {
     width:60%;
     margin:2rem auto;
 }
-.order_form-name, .order_form-phone {
+#id_client_name_field, #id_phone_field {
     width:100%;
     padding:.5rem;
     height:3.5rem;
     margin-bottom:2rem;
     font-family: "Source Sans Pro", sans-serif;
     font-size:1.2rem;
+    color:rgba(48,48,48,0.8);
+}
+.errorlist{
+    list-style-type:none;
+}
+.order_p{
+    font-family: "Source Sans Pro", sans-serif;
+    font-size:1.2rem;
+    color:rgba(0,0,0,0.8);
+}
+p label{
+    font-family: "Source Sans Pro", sans-serif;
+    font-size:1.8rem;
+    color:rgba(48,48,48,0.8);
+    font-weight: 300;
 }
 .order_btn{
     width:30%;

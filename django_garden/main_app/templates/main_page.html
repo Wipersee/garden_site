@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ua">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -83,26 +83,13 @@
                     <h4 class="reviews-h4">Відгуки</h4>
                 <div class="slider">
                     <div class="slider-container">
+                        {% for comment in comments %}
                         <div class="slide-item">
-                            <p class="slide_p">Дуже ввічливі співробітники, товар якісний. Буду ще тут покупати щось.</p>
+                            <p class="slide_p">{{ comment.comment }}</p>
                             <div class="slide_underwrite"></div>
-                            <span class="slide_author">Анатолій Васерман</span>
+                            <span class="slide_author">{{ comment.author }}</span>
                         </div>
-                      <div class="slide-item">
-                        <p class="slide_p">Дуже ввічливі співробітники, товар якісний. Буду ще тут покупати щось. Також порекомендую, друзям та знайомим, щоб теж щось обовязково купили, бо якість, повторююсь, неперевершена !</p>
-                        <div class="slide_underwrite"></div>
-                        <span class="slide_author">Анатолій Васерман</span>
-                      </div>
-                      <div class="slide-item">
-                        <p class="slide_p">Дуже ввічливі співробітники, товар якісний. Буду ще тут покупати щось.</p>
-                        <div class="slide_underwrite"></div>
-                        <span class="slide_author">Анатолій Васерман</span>
-                      </div>
-                      <div class="slide-item">
-                        <p class="slide_p">Дуже ввічливі співробітники, товар якісний. Буду ще тут покупати щось.</p>
-                        <div class="slide_underwrite"></div>
-                        <span class="slide_author">Анатолій Васерман</span>
-                      </div>
+                        {% endfor %}
                     </div>
                   </div>
                 </div>
@@ -111,9 +98,12 @@
                 <div class="container">
                     <h5 class="order_h5">Замовити дзвінок</h5>
                     <form method="POST" class="order_form">
-                        <input type="text" placeholder="Ім'я" class="order_form-name">
-                        <input type="tel" placeholder="Телефон" class="order_form-phone">
-                        <button class="order_btn">Відправити</button>
+                        <!--input type="text" placeholder="Ім'я" class="order_form-name">
+                        <input type="tel" placeholder="Телефон" class="order_form-phone"-->
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <p class="order_p">Телефон у вигляді +380xxxxxxxxx</p>
+                        <button class="order_btn" onclick="server_fetch()">Відправити</button>
                     </form>
                 </div>
             </section>
@@ -122,11 +112,11 @@
         <div class="footer">
             <div class="container"> 
             <div class="footer_nav">
-                <div class="footer_nav-l"><a href="#">Про нас</a></div>
-                <div class="footer_nav-l"><a href="#">Садовий декор</a></div>
-                <div class="footer_nav-l"><a href="fontain.html">Фонтани</a></div>
-                <div class="footer_nav-l"><a href="#">Єврозабори</a></div>
-                <div class="footer_nav-l"><a href="#">Контакти</a></div>
+                <div class="footer_nav-l nav-l "><a href="{% url 'main_page' %}">Про нас</a></div>
+                    {% for product in products %}
+                    <div class="nav-l footer_nav-l"><a href="{% url 'product' product.slug %}">{{ product.product_name }}</a></div>
+                    {% endfor %}
+                <div class="footer_nav-l nav-l "><a href="#">Контакти</a></div>
             </div>
             <div class="footer_underline"></div>
             <div class="footer-company_name">
@@ -155,8 +145,29 @@
         menu = document.getElementById('menu');
         menu.classList.toggle ('nav_hidden');
       }
-
-      
+      function server_fetch(){
+      token = document.querySelector('[name="csrfmiddlewaretoken"]').value;
+      var user_name = document.getElementById('client_name_field').value;
+      var user_phone = document.getElementById('id_phone_field').value;
+      fetch("127.0.0.1:8000", {
+            method: 'POST',
+                      headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': token,
+                      },
+                      body:JSON.stringify({
+                        client_name_field: user_name,
+                        phone_field:user_phone,
+                    }),
+        }).then(data => {
+            if(data.status == 400){
+               console.log(400);
+            }else{
+                print(200);
+                }}
+        );
+      }
     </script>
 </body>
 </html>
